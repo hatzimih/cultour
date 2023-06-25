@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/carousel1.css" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="imgModal" aria-hidden="true style=width:50%">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title img_caption" id="img_caption">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="img_modal" src="" style="width: 100%" />
+                </div>
+                <div class="modal-footer">
+                    <i>Image taken from https://picsum.photos/</i>I
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mcar">
+        <div id="wrapper">
+            <div id="carousel">
+                <div id="content">
+                    <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/10/2500/1667" />
+                    <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/11/2500/1667" />
+                    <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/15/2500/1667" />
+                    <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/17/2500/1667" />
+                    <img class="item" alt="Alejandro Escamilla" src="https://picsum.photos/id/25/5000/3333" />
+                    <img class="item" alt="Alejandro Escamilla" src="https://picsum.photos/id/33/5000/3333" />
+                    <img class="item" alt="Tyler Wanlass" src="https://picsum.photos/id/50/4608/3072" />
+                    <img class="item" alt="Tyler Wanlass" src="https://picsum.photos/id/55/4608/3072" />
+                    <img class="item" alt="Daniel Genser" src="https://picsum.photos/id/62/2000/1333" />
+                    <img class="item" alt="Rula Sibai" src="https://picsum.photos/id/82/1500/997" />
+                    <img class="item" alt="Rafael Souza" src="https://picsum.photos/id/92/3568/2368" />
+                </div>
+            </div>
+            <button id="prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+        </svg>
+      </button>
+            <button id="next">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+        </svg>
+      </button>
+        </div>
+    </div>
+</body>
+<script>
+    const gap = 6;
+
+    const carousel = document.getElementById("carousel"),
+        content = document.getElementById("content"),
+        next = document.getElementById("next"),
+        prev = document.getElementById("prev");
+
+    next.addEventListener("click", e => {
+        carousel.scrollBy(width + gap, 0);
+        if (carousel.scrollWidth !== 0) {
+            prev.style.display = "flex";
+        }
+        if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+            next.style.display = "none";
+        }
+    });
+    prev.addEventListener("click", e => {
+        carousel.scrollBy(-(width + gap), 0);
+        if (carousel.scrollLeft - width - gap <= 0) {
+            prev.style.display = "none";
+        }
+        if (!content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+            next.style.display = "flex";
+        }
+    });
+    $(".item").each(function(ind, elem) {
+        $(elem).attr('data-bs-toggle', 'modal');
+        $(elem).attr('data-bs-target', '#imgModal');
+        elem.addEventListener("click", e => {
+            console.log(elem);
+            $("#img_modal").attr('src', $(this).attr('src'));
+            $("#img_caption").html($(this).attr('alt'));
+        });
+    })
+
+    let width = carousel.offsetWidth;
+    window.addEventListener("resize", e => (width = carousel.offsetWidth));
+</script>
+
+</html>

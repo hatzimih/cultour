@@ -1,0 +1,257 @@
+    th,
+    td {
+        border: 1px solid black;
+        border-radius: 1px;
+        word-wrap: break-word;
+    }
+    
+    .ctrlButton {
+        width: 30%;
+        height: 30%;
+        cursor: pointer;
+        background-color: transparent;
+    }
+    /* Modify brand and text color */
+    
+    .navbar-custom {
+        color: #18607c;
+        background-color: #abebab;
+    }
+    
+    .navbar a {
+        color: white
+    }
+    
+    .navbar ul li a {
+        color: rgb(0, 12, 3)
+    }
+    
+    .langicon {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .tales {
+        width: 100%;
+    }
+    
+    carousel_photo {
+        width: 100%;
+        max-height: 100px !important;
+    }
+    
+    .number-text {
+        margin-top: .3em;
+    }
+    
+    .fa-stack[data-count]:after {
+        position: absolute;
+        right: 0%;
+        top: 1%;
+        content: attr(data-count);
+        font-size: 30%;
+        padding: .6em;
+        border-radius: 999px;
+        line-height: .75em;
+        color: white;
+        background: rgba(255, 0, 0, .85);
+        text-align: center;
+        min-width: 2em;
+        font-weight: bold;
+    }
+    
+    .data_table {
+        margin-left: auto;
+        margin-right: auto;
+        height: 100%;
+        table-layout: fixed;
+    }
+    
+    .aligncolor {
+        background-color: rgb(69, 240, 231);
+        color: rgb(69, 240, 231);
+    }
+    
+    #map {
+        height: 100%;
+    }
+    
+    .leaflet-container {
+        height: 600px;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .selectedtd {
+        background-color: coral;
+        box-sizing: border-box;
+    }
+    
+    .savecsvbtn {
+        max-width: 32px;
+        cursor: pointer;
+        content: url("https://www.freeiconspng.com/uploads/text-file-icon-clip-art--royalty--32.png");
+    }
+    
+    .plotpollbtn {
+        max-width: 32px;
+        cursor: pointer;
+        content: url("https://www.freeiconspng.com/uploads/financial-analysis-financial-report-graph-sales-statistics-icon-32.png");
+    }
+    
+    .editbtn {
+        max-width: 32px;
+        cursor: pointer;
+        content: url("https://www.freeiconspng.com/uploads/text-edit-icon-31.png");
+    }
+    
+    .deletebtn {
+        max-width: 32px;
+        cursor: pointer;
+        content: url("https://www.freeiconspng.com/uploads/blue-delete-button-png-29.png");
+    }
+    
+    .votepollbtn {
+        max-width: 32px;
+        cursor: pointer;
+        content: url("https://www.freeiconspng.com/uploads/vote-icon-png-23.png");
+    }
+    
+    .votesurveybtn {
+        max-width: 32px;
+        cursor: pointer;
+        content: url("https://www.freeiconspng.com/uploads/vote-icon-png-23.png");
+    }
+    
+    .dz {
+        width: 80px;
+        vertical-align: middle;
+    }
+    
+    .ui-datepicker-calendar {
+        display: none;
+    }
+    
+    .ui-widget-header,
+    .ui-state-default,
+    ui-button {
+        background: #b9cd6d;
+        border: 1px solid #b9cd6d;
+        color: #FFFFFF;
+    }
+    
+    .ui-dialog-titlebar-close {
+        background: url("https://code.jquery.com/ui/1.10.3/themes/smoothness/images/ui-icons_888888_256x240.png") repeat scroll -93px -128px rgba(0, 0, 0, 0);
+        border: medium none;
+        background-color: white;
+    }
+    
+    .ui-dialog {
+        z-index: 1000 !important;
+    }
+    
+    .tooltip .tooltip-inner {
+        background-color: rgb(70, 233, 92);
+        color: #02000a;
+        opacity: 1;
+    }
+    
+    .stable1 {
+        --bs-table-accent-bg: #aeeaaf;
+        --bs-table-hover-bg: rgb(85, 246, 107);
+    }
+    
+    .stablep>tbody>tr:nth-child(odd)>td,
+    .stablep>tbody>tr:nth-child(odd)>th {
+        background-color: rgb(220, 220, 220);
+        --bs-table-hover-bg: rgb(220, 220, 220);
+    }
+    
+    .stablep>tbody>tr:nth-child(even)>td a {
+        color: rgb(255, 255, 255);
+        font-size: 1.2vw;
+    }
+    
+    .stablep>tbody>tr:nth-child(odd)>td a {
+        color: rgb(0, 0, 0);
+        font-size: 1.3vw;
+    }
+    
+    .stablep>tbody>tr:nth-child(even)>td,
+    .stablep>tbody>tr:nth-child(even)>th {
+        background-color: rgb(0, 0, 0);
+        color: #f9f8f8;
+        --bs-table-hover-bg: rgb(0, 0, 0);
+    }
+    
+    .stables>tbody>tr:nth-child(odd)>td,
+    .stables>tbody>tr:nth-child(odd)>th {
+        background-color: rgb(220, 220, 220);
+        --bs-table-hover-bg: rgb(220, 220, 220);
+    }
+    
+    .stables>tbody>tr:nth-child(even)>td,
+    .stables>tbody>tr:nth-child(even)>th {
+        background-color: rgb(0, 0, 0);
+        color: #f9f8f8;
+        --bs-table-hover-bg: rgb(0, 0, 0);
+    }
+    
+    .stables>tbody>tr:nth-child(even)>td a {
+        color: rgb(255, 255, 255);
+        font-size: 1.3vw;
+    }
+    
+    .stables>tbody>tr:nth-child(odd)>td a {
+        color: rgb(0, 0, 0);
+        font-size: 1.3vw;
+    }
+    
+    .stabler>tbody>tr:nth-child(odd)>td,
+    .stabler>tbody>tr:nth-child(odd)>th {
+        background-color: rgb(94, 189, 244);
+        --bs-table-hover-bg: rgb(44, 165, 235);
+    }
+    
+    .stabler>tbody>tr:nth-child(even)>td,
+    .stabler>tbody>tr:nth-child(even)>th {
+        background-color: rgb(148, 230, 246);
+        --bs-table-hover-bg: rgb(74, 215, 243);
+    }
+    
+    .utable td.fit,
+    .utable th.fit {
+        white-space: nowrap;
+        width: 1%;
+    }
+    
+    .th_dbuser {
+        cursor: pointer;
+        white-space: nowrap;
+        width: 1%;
+    }
+    
+    .featured_img {
+        width: 64px;
+        height: 64px;
+        cursor: pointer;
+        border: 3px solid goldenrod;
+        border-radius: 8px;
+    }
+    
+    .descr_link {
+        text-decoration: none;
+    }
+    
+    select.mySelect {
+        background: #20d492;
+        color: #fff;
+        padding: 0 10px;
+        font-size: 22px;
+    }
+    
+    select.mySelect option {
+        color: #000;
+        padding: 0 10px;
+    }

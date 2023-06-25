@@ -1,0 +1,21 @@
+body {
+    /* Prevent the user selecting text in the example */
+    user-select: none;
+}
+
+#draggable {
+    text-align: center;
+    background: white;
+}
+
+.dropzone {
+    background: blueviolet;
+}
+
+.dropzone.dragover {
+    background-color: rgb(246, 124, 246);
+}
+
+.dragging {
+    opacity: 0.5;
+}

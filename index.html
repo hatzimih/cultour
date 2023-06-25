@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+
+    <title>Cultural Tourism</title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+
+
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@1,500&display=swap" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel='stylesheet' href='css/leaflet-gesture-handling.min.css' />
+    <script src="js/leaflet-gesture-handling.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="css/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="css/country_select/countrySelect.min.css">
+    <link rel="stylesheet" href="css/country_select/demo.css">
+
+
+    <script src='js/yearpicker.js'></script>
+
+    <script src="js/leaflet.awesome-markers.js"></script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/axios.js"></script>
+    <script src="js/indexjs.js"></script>
+    <script src="js/carousel.js"></script>
+
+    <link rel="icon" type="image/png" href="./images/favicon.png">
+    <link href="css/yearpicker.css" rel='stylesheet' />
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="css/carousel.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div class="row">
+        <div class="container">
+            <!-- start of row -->
+            <div class="row">
+                <div class="mb-1 d-flex text-white" style="background-color:rgb(128, 0, 0)">
+                    <div class="flex-grow-1 m-3">
+                        <h1 data-mltlng="index_pgtitle" style="font-family: 'Literata', serif;">Cultural tourism</h1>
+                    </div>
+                    <nav class="navbar navbar-expand-lg navbar-default navbar-custom text-white" style="background-color:rgb(128, 0, 0)">
+                        <div class="container-fluid">
+                            <a class="navbar-brand" href="#"></a>
+                            <!--<img id="logo" class="img-fluid" src="images/img17_zabea.jpg" onclick="https://www.culture.gov.gr/mystras-edu/art/11.html" style="width:10%">-->
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                            <div class="collapse navbar-collapse" id="navbarScroll">
+                                <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll">
+                                    <li class="nav-item">
+                                        <a id="loginBtn" class="nav-link text-white" data-bs-toggle="modal" data-bs-target="#signInModal" style="cursor:pointer">Login</a>
+                                        <li id="userBtns" class="nav-item dropdown" style="z-index: 9997 !important;cursor:pointer;display:none">
+                                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <span id="reg_user_ch" class="text-white">User</span>
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                                <li>
+                                                    <a id="editProfileBtn" class="nav-link">Profile</a>
+                                                </li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li>
+                                                    <a id="logoutBtn" class="nav-link">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a id="signUpBtn" class="nav-link text-white me-4" data-bs-toggle="modal" data-bs-target="#signUpModal" style="cursor:pointer">Sign up</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <!-- Login -->
+                        <select id="lang_select_ui" onchange="setUILanguage(SelectedLanguage=$('#lang_select_ui option:selected').text());" class="form-select form-select-sm ms-4 me-2" aria-label=".form-select-sm example">
+                    </select>
+                        <!--<div class="col-md-auto"><img id="selectLang" width="28" /></div>
+                    <div class="col-md-auto">
+                        <span id="selectLangTxt" class="text-white"></span>
+                        <div class="dropdown">
+                            <button id="selectLang" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="" width="28" />
+                            </button>
+                        </div>
+                    </div>-->
+                    </div>
+                </div>
+            </div>
+            <!-- Image Modal -->
+            <div class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="imgModal" aria-hidden="true style=width:50%">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title img_caption" id="img_caption">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="img_modal" src="" style="width: 100%" />
+                        </div>
+                        <div class="modal-footer">
+                            <i>Image taken from https://picsum.photos/</i>I
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div class="mcar">
+                <div id="wrapper">
+                    <div id="carousel">
+                        <div id="content">
+                            <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/10/2500/1667" />
+                            <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/11/2500/1667" />
+                            <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/15/2500/1667" />
+                            <img class="item" alt="Paul Jarvis" src="https://picsum.photos/id/17/2500/1667" />
+                            <img class="item" alt="Alejandro Escamilla" src="https://picsum.photos/id/25/5000/3333" />
+                            <img class="item" alt="Alejandro Escamilla" src="https://picsum.photos/id/33/5000/3333" />
+                            <img class="item" alt="Tyler Wanlass" src="https://picsum.photos/id/50/4608/3072" />
+                            <img class="item" alt="Tyler Wanlass" src="https://picsum.photos/id/55/4608/3072" />
+                            <img class="item" alt="Daniel Genser" src="https://picsum.photos/id/62/2000/1333" />
+                            <img class="item" alt="Rula Sibai" src="https://picsum.photos/id/82/1500/997" />
+                            <img class="item" alt="Rafael Souza" src="https://picsum.photos/id/92/3568/2368" />
+                        </div>
+                    </div>
+                    <button id="prev">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                        >
+                        <path fill="none" d="M0 0h24v24H0V0z" />
+                        <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+                        </svg>
+                    </button>
+                    <button id="next">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            >
+                            <path fill="none" d="M0 0h24v24H0V0z" />
+                            <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>-->
+
+            <div class="row pt-1 pb-1">
+                <div class="col col-12 md-auto bg-dark text-white bg-gradient d-flex">
+                    <div class="flex-grow-1 m-2">
+                        <span class="p-4"></span>
+                        <span id="members_display" class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" title="Registered users">
+                            Registered users :
+                            <span id="userCount">
+                                0
+                            </span>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="p-4"><i class="fa-regular fa-calendar-days"></i></span>
+                        <span id="time_display"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row p-0">
+                <div class="p-0 d-flex text-white" style="background-color:rgb(69, 21, 21)">
+                    <div class="p-2 h4 flex-grow-1">
+                        Polls
+                    </div>
+                    <div id="polls_checkbox" class="form-check">
+                        <label class="form-check-label  m-3" for="gridCheck1">Display archived</label>
+                        <input class="p-2 form-check-input m-3" style="accent-color: red;" onchange="TongleClass('closed_poll',this.checked)" type="checkbox" checked id="gridCheck1">
+                    </div>
+                </div>
+                <!--<div class="p-0">
+                    <nav class="navbar navbar-expand-lg navbar-default navbar-custom p-1 text-white" style="border-style: solid; border-width:2px; background-color:rgb(69, 21, 21)">
+                        <div class="col container-fluid">
+                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                <div class="navbar-nav">
+                                    <a class="nav-link" aria-current="page" href="#">Ranking (multiple items)</a>
+                                    <a class="nav-link" href="#">Rating (stars)</a>
+                                    <a class="nav-link" href="#">Yes/No</a>
+                                    <a class="nav-link" href="#" tabindex="-1">Approval: multiple items – select some</a>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>-->
+                <!--Polls Tab : list of polls-->
+                <div class="col container-fluid">
+                    <div class="table-responsive p-2">
+                        <table id="polls" class="table data-table  table-responsive table-hover stablep table-striped" style="background-color:rgb(161, 240, 197)"> </table>
+                        <table id="minpolls" class="table data-table  table-responsive" width="100%" style="background-color:rgb(211,211,211)"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-1">
+                <div class="p-0  d-flex text-white" style="background-color: rgb(69, 21, 21);">
+                    <div class="p-2 h4 flex-grow-1" style="background-color: rgb(69, 21, 21);">
+                        Surveys
+                    </div>
+                    <div id="surveys_checkbox" class="form-check">
+                        <label class="form-check-label  m-3" for="gridCheck1">Display archived</label>
+                        <input class="p-2 form-check-input m-3" style="accent-color: red;" onchange="TongleClass('closed_surveys',this.checked)" type="checkbox" checked id="gridCheck1">
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="table-responsive p-2">
+                        <table id="surveys" class="table data-table table-responsive table-hover stables" style="background-color:rgb(161, 218, 240)"></table>
+                        <table id="minsurveys" class="table data-table  table-responsive" width="100%" style="background-color:rgb(220,220,220)"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of row1 -->
+    <!-- Modal -->
+    <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: rgb(220,220,220);">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginfrm">
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user text-primary"></i></span>
+                                </div>
+                                <!--<input name="username" type="text" value="" class="input form-control" id="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" />-->
+                                <input type="text" class="input form-control" id="email" aria-describedby="emailHelp" placeholder="Enter username or email">
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock text-primary"></i></span>
+                            </div>
+                            <input type="password" class="input form-control" name="password" id="password" placeholder="Password" />
+                            <i class="fa fa-eye-slash text-primary" aria-hidden="true" id="toggle-password"></i>
+                        </div>
+                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#" onclick="$( '#signInModal').modal( 'hide');$( '#signUpModal').modal( 'show');" style="color: #393f81;">Register here</a></p>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-secondary" onclick="$('#signInModal').modal('hide');" data-dismiss="modal">Cancel</button>
+                        <div id="userMsgSi" class="m-2 row form-item bg-danger p-2" style="display:none">
+                            <label id="textMsgSi" class="p-2 text-white">Year of birth</label>
+                            <button id="closeMsgSi" type="button" class="btn btn-secondary" onclick="msgDisplay('none', 'Si');">Ok</button>
+                            <button id="closeModalSi" type="button" class="btn btn-secondary" onclick="clearSignInModal();$('#signInModal').modal('hide');">Ok</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background-color: rgb(211,211,211);">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sign up</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupfrm">
+                        <div class="col-12">
+                            <div class=" input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user text-primary"></i></span>
+                                </div>
+                                <input type="text" class="input form-control" id="new_username" aria-describedby="emailHelp" placeholder="Enter username">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class=" input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user text-primary"></i></span>
+                                </div>
+                                <input type="email" class="input form-control" id="new_email" aria-describedby="emailHelp" placeholder="Enter email">
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock text-primary"></i></span>
+                            </div>
+                            <input type="password" class="input form-control" name="password" id="new_password" placeholder="Password" />
+                            <i class="fa fa-eye-slash" aria-hidden="true" id="toggle-password"></i>
+                        </div>
+                        <div class="form-item">
+                            <span>Country of origin: </span>
+                            <input id="country_selector" type="text">
+                            <label for="country_selector" style="display:none;;z-index:9999!important;">Select a country here...</label>
+                        </div>
+                        <div class="form-item" style="display:none;">
+                            <input type="text" id="country_selector_code" name="country_selector_code" style="z-index:9999!important;" data-countrycodeinput="1" readonly="readonly" placeholder="Selected country code will appear here" />
+                            <label for="country_selector_code">...and the selected country code will be updated here</label>
+                        </div>
+                        <div class="form-item">
+                            <label for="gender_select">Gender</label>
+                            <select id="gender_select" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option value="1">I prefer not to say</option>
+                                    <option value="2">Female</option>
+                                    <option value="3">Male</option>
+                                    <option value="4">Other</option>
+                                </select>
+                        </div>
+                        <div class="form-item">
+                            <label for="lang_select">Preferred language</label>
+                            <select id="lang_select" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option value="1">En</option>
+                                    <option value="2">Gr</option>
+                                </select>
+                        </div>
+                        <div class="form-item">
+                            <label for="yearpicker">Year of birth</label>
+                            <input id="yearpicker" type="text" class="yearpicker" value="">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sign up</button>
+                        <button type="button" class="btn btn-secondary" onclick="$('#signUpModal').modal('hide');" data-dismiss="modal">Cancel</button>
+                        <div id="userMsgSu" class="m-2 row form-item bg-danger p-2" style="display:none">
+                            <label id="textMsgSu" class="p-2 text-white">Year of birth</label>
+                            <button id="closeMsgSu" type="button" class="btn btn-secondary" onclick="msgDisplay('none', 'Su');">Ok</button>
+                            <button id="closeModalSu" type="button" class="btn btn-secondary" onclick="msgDisplay('none', 'Su');$('#signUpModal').modal('hide');">Ok</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dialog" title=""></div>
+    <script>
+        $(document).ready(async function() {
+            initDialog('dialog');
+            await initLangUi("js/mltlng.json");
+
+            setUILanguage(SelectedLanguage = 'En', true);
+
+            $(".thumbnail").bind("click", function() {
+                $("#img_modal").attr('src', $(this).attr('src'));
+                $("#img_caption").html($(this).attr('alt'));
+            });
+            //data-bs-toggle="modal" data-bs-target="#imgModal" 
+            $(".thumbnail").each(function(ind, elem) {
+                $(elem).attr('data-bs-toggle', 'modal');
+                $(elem).attr('data-bs-target', '#imgModal');
+            })
+
+
+            //document.getElementById("logo").focus();
+            $('.yearpicker').yearpicker({
+                // Auto Hide
+                autoHide: true,
+
+                // Initial Year
+                year: new Date().getFullYear(),
+                // Start Year
+                startYear: 1940,
+                // End Year
+                endYear: new Date().getFullYear(),
+            });
+            let href = window.location.href;
+            path_to_root = href.substring(0, href.lastIndexOf('/'));
+
+
+            $("#surveys").html(`<thead><tr class="bg-dark text-white">
+                                    <th data-celltype="txt" class="col-sm-4">Title</th>
+                                    <th data-celltype="txt" class="col-sm-2">Start date</th>
+                                    <th data-celltype="txt" class="col-sm-2">End date</th>
+                                    <th data-celltype="bool" class="col-sm-1">Status</th>
+                                    <th data-celltype="pref_lang" class="col-sm-1">Language</th>
+                                </tr></thead><tbody></tbody>`);
+
+            $("#minsurveys").html(`<thead style='display:none;'><tr>
+                                    <th data-celltype="txt" class="col-sm-1"></th>
+                                    <th data-celltype="txt" class="col-sm-4"></th>
+                                </tr></thead><tbody></tbody>`);
+
+            let sql1 = "SELECT id,description,start_date,end_date, open,lang FROM surveys";
+            await fillTable("surveys", sql1, SURVEY, VISITOR);
+
+            $("#minpolls").html(`<thead style='display:none;'><tr>
+                                    <th data-celltype="txt" class="col-sm-1"></th>
+                                    <th data-celltype="txt" class="col-sm-4"></th>
+                                </tr></thead><tbody></tbody>`);
+            $("#polls").html(`<thead><tr class="bg-dark text-white">
+                                    <th data-celltype="txt" class="col-sm-5"><span>Title</span></th>
+                                    <th data-celltype="txt" class="col-sm-1"><span>Image</span></th>
+                                    <th data-celltype="txt" class="col-sm-1"><span>Start date</span></th>
+                                    <th data-celltype="txt" class="col-sm-1"><span>End date</span></th>
+                                    <th data-celltype="bool" class="col-sm-1"><span>Status</span></th>
+                                    <th data-celltype="pref_lang" class="col-sm-1"><span>Language</span></th>
+                                </tr></thead><tbody></tbody>`);
+            let sql2 = "SELECT p.id, p.description as descr, pk.description as kind, p.start_date, p.end_date, p.open, p.lang, p.url"
+            sql2 += " FROM polls as p INNER JOIN pollkinds as pk ON p.kind=pk.id where p.in_survey=false order by p.id";
+            await fillTable("polls", sql2, POLL, VISITOR);
+
+            var exampleEl = document.getElementById('members_display');
+            var tooltip = new bootstrap.Tooltip(exampleEl, {
+                boundary: document.body // or document.querySelector('#boundary')
+            });
+
+            $('#time_display').text(getCurrentTimeStamp());
+            var x = setInterval(function() {
+                // Get today's date and time
+                $('#time_display').text(getCurrentTimeStamp());
+            }, 1000 * 60);
+
+            getUsersCount();
+
+            $("#loginfrm").submit(function(event) {
+                let username = $('#email').val();
+                let password = $('#password').val();
+                authenticateUser(event, username, password);
+
+            });
+            $("#logoutBtn").click(function(event) {
+
+                displayMsgJQ("dialog", "User logout", "Thank you very much for your contribution. Looking forward to your next valuable votes!", INFO_MSG, false, 'OK', logoutf, null);
+                //displayInfo("Thank you very much for your contribution. Looking forward to your next valuable votes!", "Si");
+                //const lgout = logoutUser();
+                //console.log(lgout);
+                //$("#loginBtn").show();
+                //$("#signUpBtn").show();
+                //$("#userBtns").hide();
+            });
+            $("#editProfileBtn").click(function(event) {
+                window_width = 550;
+                window_height = 500;
+                [window_left, window_top] = calculateNewWindowPosition(window_width, window_height);
+                var href = window.location.href;
+                newWindowUrl = "php/pages/editUserProfile.php?id=" + currentUserId;
+                var myWindow = window.open(newWindowUrl, "Edit user profile1", `width=${window_width},height=${window_height}, left=${window_left}, top=${window_top},scrollbars=yes`);
+
+            });
+
+            $("#signupfrm").submit(function(event) {
+                currentUserId = registerUser();
+                emptySignUpForm();
+            })
+
+            $("#toggle-password").click(function() {
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                if ($('#password').attr("type") == "password") {
+                    $('#password').attr("type", "text");
+                } else {
+                    $('#password').attr("type", "password");
+                }
+            });
+
+            $('#signInModal').on('shown.bs.modal', function() {
+                $('#email').trigger('focus');
+            });
+            SetClassTooltip('votepollbtn', "Vote");
+            SetClassTooltip('votingCount', "Number of votes");
+            SetClassTooltip('votesurveybtn', "Take the survey");
+
+            //prepareCarousel();
+            adjustView(document.documentElement.clientWidth);
+            $(window).resize(function() {
+                var viewport_width = document.documentElement.clientWidth;
+                adjustView(viewport_width);
+            });
+        })
+    </script>
+    <div class="alert alert-danger" role="alert" id="err_msg" style="display:none">
+        <span id="info"> This is a danger alert—check it out!</span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <script src="js/country_select/countrySelect.min.js"></script>
+    <script>
+        $("#country_selector").countrySelect({
+            defaultCountry: "gr",
+            // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+            //responsiveDropdown: true,
+            //preferredCountries: ['ca', 'gb', 'us']
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+</body>
+
+</html>

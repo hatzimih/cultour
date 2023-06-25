@@ -1,0 +1,22 @@
+[{
+        "title": "Available languages, genders",
+        "langs": ["En", "Gr", "Es"],
+        "langsDescr": ["EN", "EL", "ES"],
+        "langsURL": ["https://img.icons8.com/fluency/48/000000/great-britain-circular.png", "https://img.icons8.com/fluency/48/000000/greece-circular.png", "https://img.icons8.com/fluency/48/000000/spain-circular.png"],
+        "gendersEn": ["I prefer not to say", "Female", "Male", "Others"],
+        "gendersGr": ["Δεν επιθυμώ να δηλώσω", "Γυναίκα", "Άνδρας", "Άλλο"],
+        "gendersEs": ["Prefiero no decir", "Femenina", "Masculina", "Otra"]
+    },
+    [{
+            "id": "index_pgtitle",
+            "En": "Cultural tourism",
+            "Gr": "Πολιτιστικός τουρισμός",
+            "Es": "Turismo cultural"
+        },
+        {
+            "id": "logo_txt",
+            "En": "abc!",
+            "Gr": "αβγ!"
+        }
+    ]
+]

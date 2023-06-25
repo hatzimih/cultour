@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1253">
+    <title>New Page 4</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/nerdamer.core.js" id="core"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Algebra.js" class="module" data-name="Algebra"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Calculus.js" class="module" data-name="Calculus"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Solve.js" class="module" data-name="Solve"></script>
+    <script crossorigin src="https://unpkg.com/wolfram-notebook-embedder@0.3/dist/wolfram-notebook-embedder.min.js"></script>
+
+    <script crossorigin src="js/math.js"></script>
+
+    <style>
+        latex-js {
+            display: inline-block;
+            width: 40%;
+            border: 1px solid red;
+            margin-right: 2em;
+        }
+    </style>
+
+    <script>
+        //https://dplj2022.glitch.me/?mathstr=A=1/(1%2B1%2BD),D=1/(1%2BE),E=1/(1%2BA%2B0.5),A%3E0,D%3E0,E%3E0
+        function test() {
+            var sol = nerdamer.solve('x=1/((1+1/(1+1/x)))', 'x');
+            console.log(sol.text())
+                //var sol1 = nerdamer.solveEquations(['A=1/(1+1+D)', 'D =1/(1+E)', 'E=1/(1+A+0.5)']);
+                //var sol1 = nerdamer.solveEquations(['10-x=y-11', 'x+2y=20'])
+                //console.log(sol1);
+            console.log(math.evaluate("1/12 (sqrt(241) - 11)"));
+        }
+    </script>
+</head>
+
+<body onload="test();">
+    <div id="container"></div>
+    <h1>Compiling LaTeX</h1>
+
+    <latex-js baseURL="https://cdn.jsdelivr.net/npm/latex.js/dist/">
+        \documentclass{article} \begin{document} Hello World. $a \succeq^{Bbs}_{AF} b$ $f_1(x) = x^2$ \end{document}
+    </latex-js>
+
+
+    <latex-js hyphenate="false">
+        Another.
+    </latex-js>
+</body>
+
+</html>
